@@ -97,4 +97,10 @@ def computer_guess(board, last_hit=None):
         row = random.randint(0, 8)
         col = random.randint(0, 8)
         if board[row][col] == ' ':
-            return row, col    
+            return row, col 
+
+def is_ship_sunk(ship_positions, board, ship):
+    """
+    Checks if all parts of the specified ship are hit ('X').
+    """
+    return all(board[row][col] == 'X' for row, col in ship_positions[ship])               
