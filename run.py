@@ -67,7 +67,7 @@ def place_ships(board):
                 placed = True
     return ship_positions
 
-ef validate_input(guess):
+def validate_input(guess):
     """
     Validates user input for the guess.
     """
