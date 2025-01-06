@@ -10,3 +10,9 @@ ships = {
     'Submarine': 3,
     'Destroyer': 2
 }
+
+def create_board():
+    """
+    Creates a 9x9 empty board initialized with ' '.
+    """
+    return [[' '] * 9 for _ in range(9)]
