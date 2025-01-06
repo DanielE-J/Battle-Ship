@@ -103,4 +103,27 @@ def is_ship_sunk(ship_positions, board, ship):
     """
     Checks if all parts of the specified ship are hit ('X').
     """
-    return all(board[row][col] == 'X' for row, col in ship_positions[ship])               
+    return all(board[row][col] == 'X' for row, col in ship_positions[ship])   
+
+def main():
+    """
+    Entry point of the program.
+    """
+    print("Welcome to Battleship! 🚢")
+    print("""
+    Instructions:
+    1. Enter your name when prompted.
+    2. The game will create a 9x9 board for you and the computer.
+    3. Ships will be placed randomly on the board.
+    4. Guess the position of the enemy ships by entering a coordinate (e.g., A1).
+    5. The computer will tell you if your guess was a hit or a miss.
+    6. The computer will also guess the location of your ships.
+    7. The first to sink all the opponent's ships wins the game.
+    8. You can exit the game at any time by typing 'exit' during your turn.
+    Have fun playing Battleship! 🎮
+    """)
+    play_game()
+    print('Thanks for playing Battleship! 👋')
+
+if __name__ == '__main__':
+    main()
