@@ -105,6 +105,92 @@ def is_ship_sunk(ship_positions, board, ship):
     """
     return all(board[row][col] == 'X' for row, col in ship_positions[ship])   
 
+
+def play_game():
+    """
+    Main game loop where player and computer alternate turns.
+    """
+    name = input('Enter your name: ').strip()
+    while not name or re.match(r'^\d', name):
+        print('Invalid name. Please enter a valid name.')
+        name = input('Enter your name: ').strip()
+
+    input('Press Enter to start the game...')
+
+    player_board = create_board()
+    computer_board = create_board()
+
+    print('Placing ships on the boards... 🌊')
+    player_ship_positions = place_ships(player_board)
+    computer_ship_positions = place_ships(computer_board)
+    player_ships_sunk = {ship: False for ship in ships}
+    computer_ships_sunk = {ship: False for ship in ships}
+    guessed_coords = set()
+    last_hit = None
+
+    print('Player Board:')
+    print_board(player_board)
+
+    while True:
+        guess = input('Enter your guess (e.g. A1), or type "exit" to quit: ').strip()
+
+        if guess.lower() == 'exit':
+            print('Quitting the game... Goodbye! 👋')
+            break
+
+        if not validate_input(guess):
+            continue
+
+        col = ord(guess[0].upper()) - ord('A')
+        row = int(guess[1:]) - 1
+
+        if (row, col) in guessed_coords:
+            print('You have already guessed that coordinate. Try again. ⛔')
+            continue
+
+        guessed_coords.add((row, col))
+
+        if computer_board[row][col] == 'O':
+            computer_board[row][col] = 'X'
+            print('Hit! 🎯')
+            for ship in ships:
+                if is_ship_sunk(computer_ship_positions, computer_board, ship):
+                    if not computer_ships_sunk[ship]:
+                        print(f"You sunk the enemy's {ship}! 🚩")
+                        computer_ships_sunk[ship] = True
+        else:
+            computer_board[row][col] = 'M'
+            print('Miss! 🌊')
+
+        if all(computer_ships_sunk.values()):
+            print("Victory! You sunk all the enemy's ships! 🏆")
+            break
+
+        computer_row, computer_col = computer_guess(player_board, last_hit)
+
+        if player_board[computer_row][computer_col] == 'O':
+            player_board[computer_row][computer_col] = 'X'
+            print('Enemy hit your ship! 💥')
+            last_hit = (computer_row, computer_col)
+            for ship in ships:
+                if is_ship_sunk(player_ship_positions, player_board, ship):
+                    if not player_ships_sunk[ship]:
+                        print(f'The enemy sunk your {ship}! 💣')
+                        player_ships_sunk[ship] = True
+        else:
+            player_board[computer_row][computer_col] = 'M'
+            print(f'Enemy missed! 🌊 (Enemy guessed {chr(computer_col + ord("A"))}{computer_row + 1})')
+            last_hit = None
+
+        if all(player_ships_sunk.values()):
+            print('Defeat! The enemy sunk all your ships! 😭')
+            break
+
+        print('Player Board:')
+        print_board(player_board)
+        print('Computer Board:')
+        print_board(computer_board, hide_ships=True)    
+
 def main():
     """
     Entry point of the program.
