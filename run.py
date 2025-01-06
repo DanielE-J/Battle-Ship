@@ -66,3 +66,16 @@ def place_ships(board):
                 ship_positions[ship] = mark_ship(row, col, size, orientation)
                 placed = True
     return ship_positions
+
+ef validate_input(guess):
+    """
+    Validates user input for the guess.
+    """
+    if len(guess) < 2 or len(guess) > 3:
+        print("Invalid input format. Use a letter (A-I) followed by a number (1-9).")
+        return False
+    col, row = guess[0].upper(), guess[1:]
+    if col not in 'ABCDEFGHI' or not row.isdigit() or not (1 <= int(row) <= 9):
+        print("Invalid coordinates. Column must be A-I, and row must be 1-9.")
+        return False
+    return True
