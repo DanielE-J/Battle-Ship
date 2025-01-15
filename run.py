@@ -11,11 +11,13 @@ ships = {
     'Destroyer': 2
 }
 
+
 def create_board():
     """
     Creates a 9x9 empty board initialized with ' '.
     """
     return [[' '] * 9 for _ in range(9)]
+
 
 def print_board(board, hide_ships=False):
     """
@@ -29,6 +31,7 @@ def print_board(board, hide_ships=False):
         row = [symbols[cell] if not (hide_ships and cell == 'O') else symbols[' '] for cell in board[i]]
         print(f'{i + 1} |' + '|'.join(row) + '|')
         print('  -------------------')
+
 
 def place_ships(board):
     """
@@ -67,6 +70,7 @@ def place_ships(board):
                 placed = True
     return ship_positions
 
+
 def validate_input(guess):
     """
     Validates user input for the guess.
@@ -97,13 +101,14 @@ def computer_guess(board, last_hit=None):
         row = random.randint(0, 8)
         col = random.randint(0, 8)
         if board[row][col] == ' ':
-            return row, col 
+            return row, col
+
 
 def is_ship_sunk(ship_positions, board, ship):
     """
     Checks if all parts of the specified ship are hit ('X').
     """
-    return all(board[row][col] == 'X' for row, col in ship_positions[ship])   
+    return all(board[row][col] == 'X' for row, col in ship_positions[ship])
 
 
 def play_game():
@@ -189,7 +194,8 @@ def play_game():
         print('Player Board:')
         print_board(player_board)
         print('Computer Board:')
-        print_board(computer_board, hide_ships=True)    
+        print_board(computer_board, hide_ships=True)
+
 
 def main():
     """
@@ -211,7 +217,6 @@ def main():
     play_game()
     print('Thanks for playing Battleship! 👋')
 
+
 if __name__ == '__main__':
     main()
-
-
