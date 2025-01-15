@@ -207,7 +207,7 @@ def main():
     1. Enter your name when prompted.
     2. The game will create a 9x9 board for you and the computer.
     3. Ships will be placed randomly on the board.
-    4. Guess the position of the enemy ships by entering coordinates (e.g., A1).
+    4. Guess the position of the enemy ships by entering coordinates (e.g. A1).
     5. The computer will tell you if your guess was a hit or a miss.
     6. The computer will also guess the location of your ships.
     7. The first to sink all the opponent's ships wins the game.
