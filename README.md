@@ -142,3 +142,9 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 * Gives user option to view game rules or start game.
 * Gives the user the option to choose your own name.
 * User stories covered: 1, 2
+
+<details>
+    <summary>Main Menu Screenshot</summary>
+
+![Main menu](readme_images/userstory1,2.jpg)
+</details>
