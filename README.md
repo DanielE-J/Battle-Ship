@@ -26,7 +26,8 @@ Live site: https://dej-battle-ship-09b38984d0bb.herokuapp.com/
     1. [Main menu](#Main-menu)
     2. [Game hit/miss emoji](#Game-hit/miss-emoji)
     3. [Game hit/miss text](#Game-hit/miss-text)
-    3. [Contact form](#contact-form)
+    4. [Game Win](#Game-Win)
+
 6. [Testing](#validation)
     1. [HTML Validation](#HTML-validation)
     2. [CSS Validation](#CSS-validation)
@@ -113,7 +114,8 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 2. I want to personalise the game and enter my name
 3. I want to receive a real time feedback emoji throughout the game
 4. I want to receive a real time feedback message throughout the game
-4. I want to get a feedback when I win the game
+5. I want to get a feedback when I win the game
+6. I want the user to exit when he want eaiter to stop or restart game
 
 ### Site Owner
 
@@ -157,7 +159,7 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 * User stories covered: 3
 
 <details>
-    <summary>Main Menu Screenshot</summary>
+    <summary>Game hit/miss emoji Screenshot</summary>
 
 ![Main menu](readme_images/hitandmiss.jpg)
 </details>
@@ -170,7 +172,7 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 
 <details>
-    <summary>Main Menu Screenshot</summary>
+    <summary>Game hit/miss text Screenshot</summary>
 
 ![Main menu](readme_images/hitandmisstext.jpg)
 </details>
@@ -182,7 +184,18 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 * User stories 5
 
 <details>
-    <summary>Main Menu Screenshot</summary>
+    <summary>Game Win Screenshot</summary>
 
 ![Main menu](readme_images/win.jpg)
+</details>
+
+### Exit Game
+
+* Will show the user how to exit.
+* User stories 6
+
+<details>
+    <summary>Exit Game Screenshot</summary>
+
+![Main menu](readme_images/exit.jpg)
 </details>
