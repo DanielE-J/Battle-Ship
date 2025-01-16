@@ -49,3 +49,17 @@ def log_in_player():
     except Exception as e:
         print(Col.RED + f"An error occurred: {e}")
         return None
+
+
+def get_email(playername: str) -> str:
+    """
+    Ask user to input their email address
+    @param playername(string): Player's number
+    """
+    while True:
+        email = input(f"{playername} - what's your email address?\n").strip()
+
+        if validate_user_email(email):
+            break
+
+    return email        
