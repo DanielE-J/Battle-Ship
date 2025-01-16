@@ -91,5 +91,10 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 * When you have entered your name you have to press enter to get to stage 2.
 * Then you have to press enter again to start the game.
 
+#### Game
 
-
+* First thing is that you will see your own board.
+* Players take turns to make their moves by writing A-I and 1-9.
+* If you hit you will see a fire emoji and if you miss you will see a wave emoji.
+* If you shoot a piece that has allready get shot you will get a stop emjoi and a message.
+* Make sure you kill all the computers boats before it kills you.
