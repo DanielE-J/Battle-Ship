@@ -58,3 +58,10 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 * Create a game that is easy and clear to user.
 * Ensure that users understand the purpose of the game.
 * Create a game that helps user when you make misstake. 
+
+## User Experience
+
+### Target Audience
+
+* People that enjoy classic board games.
+* People who like games vs computer.
