@@ -226,6 +226,34 @@ The testing approach is as follows:
 <img src="readme_images/name.jpg">
 </details>
 
+3. I want to receive a real time feedback emoji throughout the game
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+| Main menu | Game | Users are presented with emoji when hit or miss | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="readme_images/hitandmissfeature.jpg">
+</details>
+
+
+4. I want to receive a real time feedback text throughout the game
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+| Main menu | Select option 1 | Users are presented with text when hit or miss | Works as expected |
+
+
+<details><summary>Screenshot</summary>
+<img src="readme_images/hit.jpg">
+</details>
+
+<details><summary>Screenshot</summary>
+<img src="readme_images/miss.jpg">
+</details>
+
+
+
 ## Bugs
 
 
