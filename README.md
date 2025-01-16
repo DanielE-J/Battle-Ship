@@ -198,6 +198,10 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 [PEP8 Validation Service](http://pep8online.com/) was used to check the code for PEP8 requirements. All the code passes with no errors and no warnings to show.
 
+<details><summary>PEP3 check for run.py</summary>
+<img src="docs/validation/pep8-validation-run.JPG">
+</details>
+
 
 ## Testing
 
