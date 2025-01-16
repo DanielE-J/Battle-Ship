@@ -98,3 +98,7 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 * If you hit you will see a fire emoji and if you miss you will see a wave emoji.
 * If you shoot a piece that has allready get shot you will get a stop emjoi and a message.
 * Make sure you kill all the computers boats before it kills you.
+
+#### Exit game
+
+* If you would like to exit game just type exit game.
