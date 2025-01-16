@@ -206,6 +206,16 @@ The testing approach is as follows:
 
 ### Manual Testing
 
+1. I want to be able to read the rules of the game
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+| Main menu | Main menu | Users are presented with game rules | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="readme_images/gamerules.jpg">
+</details>
+
 
 
 ## Bugs
