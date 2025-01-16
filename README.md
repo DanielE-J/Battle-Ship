@@ -17,8 +17,8 @@ Live site: https://dej-battle-ship-09b38984d0bb.herokuapp.com/
     1. [Target Audience](#target-audience)
     2. [User Requirements and Expectations](#user-requirements-and-expectations)
     3. [User Manual](#user-manual)
-    4. [User Stories](#user-stories)
-    5. [Site Owner Stories](#site-owner-stories)
+    4. [User](#user-stories)
+    5. [Site Owner](#site-owner-stories)
 4. [Technologies](#Technologies)
     1. [Languages](#languages)
     2. [Frameworks & Tools](#frameworks-&-tools)
@@ -102,3 +102,19 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 #### Exit game
 
 * If you would like to exit game just type exit game.
+
+
+## User Stories
+
+### Users
+
+1. I want to be able to read the rules of the game
+2. I want to personalise the game and enter my name
+3. I want to receive a real time feedback throughout the game
+4. I want to get a feedback when I win the game
+
+### Site Owner
+
+1. I want users to easily select options from the menu
+2. I want users to have a positive experience whilst playing the game
+3. I want the game to be vissually fun.
