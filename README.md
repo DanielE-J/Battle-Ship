@@ -19,22 +19,24 @@ Live site: https://dej-battle-ship-09b38984d0bb.herokuapp.com/
     3. [User Manual](#user-manual)
     4. [User](#user-stories)
     5. [Site Owner](#site-owner-stories)
-4. [Technologies](#Technologies)
+4. [Technical Design](#technical-design)
+    1. [Flowchart](#flowchart)    
+5. [Technologies](#Technologies)
     1. [Languages](#languages)
     2. [Frameworks & Tools](#frameworks-&-tools)
-5. [Features](#features)
+6. [Features](#features)
     1. [Main menu](#Main-menu)
     2. [Game hit/miss emoji](#Game-hit/miss-emoji)
     3. [Game hit/miss text](#Game-hit/miss-text)
     4. [Game Win](#Game-Win)
-6. [Validation](#validation)
-7. [Testing](#testing)
+7. [Validation](#validation)
+8. [Testing](#testing)
     1. [Manual Testing](#manual-testing)  
-7. [Bugs](#Bugs)
-8. [Deployment](#deployment) 
+9. [Bugs](#Bugs)
+10. [Deployment](#deployment) 
     1. [Version Control](#Version-Control)  
     2. [Heroku Deployment](#Heroku-Deployment) 
-9. [Acknowledgements](#acknowledgements)              
+11. [Acknowledgements](#acknowledgements)              
 
 
 ## Introduction
@@ -117,6 +119,15 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 2. I want users to have a positive experience whilst playing the game
 3. I want the game to be vissually fun.
 
+## Technical Design
+
+### Flowchart
+
+The following flowchart summarises the structure and logic of the application.
+
+<details><summary>Flowchart</summary>
+<img src="docs/Connect4-flowchart.jpg">
+</details>
 
 ## Technologies
 
@@ -199,7 +210,7 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 [PEP8 Validation Service](http://pep8online.com/) was used to check the code for PEP8 requirements. All the code passes with no errors and no warnings to show.
 
 <details><summary>PEP3 check for run.py</summary>
-<img src="docs/validation/pep8-validation-run.JPG">
+<img src="">
 </details>
 
 
