@@ -216,7 +216,15 @@ The testing approach is as follows:
 <img src="readme_images/gamerules.jpg">
 </details>
 
+2. I want to be able to Enter my name
 
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+| Main menu | Main menu | Users are presented with enter name | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="readme_images/name.jpg">
+</details>
 
 ## Bugs
 
