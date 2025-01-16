@@ -23,9 +23,9 @@ Live site: https://dej-battle-ship-09b38984d0bb.herokuapp.com/
     1. [Languages](#languages)
     2. [Frameworks & Tools](#frameworks-&-tools)
 5. [Features](#features)
-    1. [Start screen](#Start-screen)
-    2. [Footer](#footer)
-    3. [Quiz over screen](#quiz-over-screen)
+    1. [Main menu](#Main-menu)
+    2. [Game hit/miss emoji](#Game-hit/miss-emoji)
+    3. [Game hit/miss text](#Game-hit/miss-text)
     3. [Contact form](#contact-form)
 6. [Testing](#validation)
     1. [HTML Validation](#HTML-validation)
@@ -150,14 +150,27 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 ![Main menu](readme_images/userstory1,2.jpg)
 </details>
 
-### Game
+### Game hit/miss emoji
 
-* Will show the user when you get a hit.
-* Will show the user when you get a miss.
+* Will show the user emoji when you get a hit.
+* Will show the user emoji when you get a miss.
 * User stories covered: 3
 
 <details>
     <summary>Main Menu Screenshot</summary>
 
 ![Main menu](readme_images/hitandmiss.jpg)
+</details>
+
+### Game hit/miss text
+
+* Will show the user text  when you get a hit.
+* Will show the user text when you get a miss.
+* User stories covered: 4
+
+
+<details>
+    <summary>Main Menu Screenshot</summary>
+
+![Main menu](readme_images/hitandmisstext.jpg)
 </details>
