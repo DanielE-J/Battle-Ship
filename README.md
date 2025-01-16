@@ -72,3 +72,13 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 * A simple  but fun game.
 * Personal game with names.
 * Easy navigation.
+
+### User Manual
+
+<details><summary>Click here to view instructions</summary>
+
+#### Main Menu
+
+* On the main menu, the user is presented with a welcome message and instructions.
+
+
