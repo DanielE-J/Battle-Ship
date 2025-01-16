@@ -27,19 +27,13 @@ Live site: https://dej-battle-ship-09b38984d0bb.herokuapp.com/
     2. [Game hit/miss emoji](#Game-hit/miss-emoji)
     3. [Game hit/miss text](#Game-hit/miss-text)
     4. [Game Win](#Game-Win)
-
-6. [Testing](#validation)
-    1. [HTML Validation](#HTML-validation)
-    2. [CSS Validation](#CSS-validation)
-    3. [JavaScript Validation](#javascript-validation)
-    4. [Accessibility](#accessibility)
-    5. [Performance](#performance)
-    6. [Devices](#Devices)
-    7. [Browser compatibility](#browser-compatability)
-    8. [Testing user stories](#Testing-user-stories)
+6. [Validation](#validation)
+7. [Testing](#testing)
+    1. [Manual Testing](#manual-testing)  
 7. [Bugs](#Bugs)
 8. [Deployment](#deployment) 
-    1. [EmailJS API](#emailjs-api)   
+    1. [Version Control](#Version-Control)  
+    2. [Heroku Deployment](#Heroku-Deployment) 
 9. [Acknowledgements](#acknowledgements)              
 
 
@@ -199,3 +193,52 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 ![Main menu](readme_images/exit.jpg)
 </details>
+
+## Validation
+
+[PEP8 Validation Service](http://pep8online.com/) was used to check the code for PEP8 requirements. All the code passes with no errors and no warnings to show.
+
+
+## Testing
+
+The testing approach is as follows:
+1. Manual testing of user stories
+
+### Manual Testing
+
+
+
+## Bugs
+
+
+
+
+
+## Deployment
+
+### Version Control
+
+The site was created using the Visual Studio Code editor and pushed to github to the remote repository Battleship_PP3_CI
+
+The following git commands were used throughout development to push code to the remote repo:
+
+- ```git add .``` - This command was used to add the file(s) to the staging area before they are committed.
+- ```git commit -m "commit message"``` - This command was used to commit changes to the local repository queue ready for the final step.
+- ```git push``` - This command was used to push all committed code to the remote repository on github.
+
+### Heroku Deployment
+
+The below steps were followed to deploy this project to Heroku:
+- Go to Heroku and click "New" to create a new app.
+
+- Choose an app name and region region, click "Create app".
+- Navigate to Buildpacks and add buildpacks for Python and NodeJS (in that order).
+- Navigate to "Deploy". Set the deployment method to Github and enter repository name and connect.
+- Scroll down to Manual Deploy, select "main" branch and click "Deploy Branch".
+- The app will now be deployed to heroku
+
+## Acknowledgements
+
+I would like to take the opportunity to thank:
+* My mentor Mo Shami for his feedback, advice, and support.
+* My Wife Agnes for her support, advice and help with the baby so i can take time for my project.
