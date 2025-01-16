@@ -237,7 +237,7 @@ The testing approach is as follows:
 </details>
 
 
-4. I want to get a feedback when I win the game
+4. I want to receive a real time feedback text throughout the game
 
 | **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
@@ -253,7 +253,7 @@ The testing approach is as follows:
 </details>
 
 
-5. I want to receive a real time feedback text throughout the game
+5. I want to get a feedback when I win the game
 
 | **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
@@ -263,6 +263,17 @@ The testing approach is as follows:
 <details><summary>Screenshot</summary>
 <img src="readme_images/win2.jpg">
 </details>
+
+6. I want the user to exit when he want eaiter to stop or restart game
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+| Main menu | Game| Users have to option at all time to exit game | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="readme_images/exit2.jpg">
+</details>
+
 
 ## Bugs
 
