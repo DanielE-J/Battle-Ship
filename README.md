@@ -115,9 +115,10 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 ### Site Owner
 
-1. I want users to easily select options from the menu
-2. I want users to have a positive experience whilst playing the game
-3. I want the game to be vissually fun.
+1. I want users to easily read the instructions
+2. I want users to easily start the game
+3. I want users to have a positive experience whilst playing the game
+4. I want the game to be vissually fun.
 
 ## Technical Design
 
