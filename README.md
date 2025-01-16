@@ -125,3 +125,10 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 ### Languages
 
 * [Python](https://www.python.org/) programming language for the logic of the program
+
+### Frameworks & Tools
+
+* GitHub
+* Gitpod
+* Heroku
+* pep8ci.herokuapp.com
