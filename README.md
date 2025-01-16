@@ -103,6 +103,7 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 * If you would like to exit game just type exit game.
 
+</details>
 
 ## User Stories
 
@@ -132,3 +133,5 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 * Gitpod
 * Heroku
 * pep8ci.herokuapp.com
+
+## Features
