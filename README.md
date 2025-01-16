@@ -65,3 +65,9 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 * People that enjoy classic board games.
 * People who like games vs computer.
+
+### User Requirements and Expectations
+
+* A simple  but fun game.
+* Personal game with names.
+* Easy navigation.
