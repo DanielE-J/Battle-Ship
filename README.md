@@ -135,3 +135,10 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 * pep8ci.herokuapp.com
 
 ## Features
+
+### Main menu
+
+* Gives the user a welcome message.
+* Gives user option to view game rules or start game.
+* Gives the user the option to choose your own name.
+* User stories covered: 1, 2
