@@ -50,5 +50,11 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 ### User Goals
 
-* Play a fun and easy game 
-* Read the rules of the game
+* Play a fun and easy game. 
+* Read the rules of the game.
+
+### Site Owner Goals
+
+* Create a game that is easy and clear to user.
+* Ensure that users understand the purpose of the game.
+* Create a game that helps user when you make misstake. 
