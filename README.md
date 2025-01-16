@@ -118,3 +118,10 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 1. I want users to easily select options from the menu
 2. I want users to have a positive experience whilst playing the game
 3. I want the game to be vissually fun.
+
+
+## Technologies
+
+### Languages
+
+* [Python](https://www.python.org/) programming language for the logic of the program
