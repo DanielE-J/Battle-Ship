@@ -81,4 +81,15 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 * On the main menu, the user is presented with a welcome message and instructions.
 
+#### Before playing
+
+* Before playing the game you have a set of instructions in a list that you should read.
+
+#### Play
+
+* To start the game you will first have to enter your name.
+* When you have entered your name you have to press enter to get to stage 2.
+* Then you have to press enter again to start the game.
+
+
 
