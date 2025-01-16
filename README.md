@@ -111,7 +111,8 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 1. I want to be able to read the rules of the game
 2. I want to personalise the game and enter my name
-3. I want to receive a real time feedback throughout the game
+3. I want to receive a real time feedback emoji throughout the game
+4. I want to receive a real time feedback message throughout the game
 4. I want to get a feedback when I win the game
 
 ### Site Owner
@@ -147,4 +148,16 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
     <summary>Main Menu Screenshot</summary>
 
 ![Main menu](readme_images/userstory1,2.jpg)
+</details>
+
+### Game
+
+* Will show the user when you get a hit.
+* Will show the user when you get a miss.
+* User stories covered: 3
+
+<details>
+    <summary>Main Menu Screenshot</summary>
+
+![Main menu](readme_images/hitandmiss.jpg)
 </details>
