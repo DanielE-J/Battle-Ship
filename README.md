@@ -237,11 +237,11 @@ The testing approach is as follows:
 </details>
 
 
-4. I want to receive a real time feedback text throughout the game
+4. I want to get a feedback when I win the game
 
 | **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-| Main menu | Select option 1 | Users are presented with text when hit or miss | Works as expected |
+| Main menu | Game | Users are presented with text when hit or miss | Works as expected |
 
 
 <details><summary>Screenshot</summary>
@@ -253,6 +253,16 @@ The testing approach is as follows:
 </details>
 
 
+5. I want to receive a real time feedback text throughout the game
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+| Main menu | Game| Users are presented with text when you win game | Works as expected |
+
+
+<details><summary>Screenshot</summary>
+<img src="readme_images/win2.jpg">
+</details>
 
 ## Bugs
 
