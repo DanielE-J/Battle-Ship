@@ -44,3 +44,11 @@ Live site: https://dej-battle-ship-09b38984d0bb.herokuapp.com/
 ## Introduction
 
 Welcome to my Battle-ship game, Hope you will enjoy it.
+
+
+## Project Goals
+
+### User Goals
+
+* Play a fun and easy game 
+* Read the rules of the game
