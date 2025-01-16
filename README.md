@@ -174,3 +174,15 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 
 ![Main menu](readme_images/hitandmisstext.jpg)
 </details>
+
+
+### Game Win 
+
+* Will show the user when you win
+* User stories 5
+
+<details>
+    <summary>Main Menu Screenshot</summary>
+
+![Main menu](readme_images/win.jpg)
+</details>
