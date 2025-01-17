@@ -95,14 +95,15 @@ def validate_input(guess):
 
 def computer_guess(board, last_hit=None):
     """
-    Computer guesses a cell. If last_hit is provided, guesses adjacent cells first.
+    Computer guesses. If last_hit is provided, guesses adjacent cells first.
     """
     if last_hit:
         row, col = last_hit
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         for dr, dc in directions:
             new_row, new_col = row + dr, col + dc
-            if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
+            if 0 <=new_row < 9 and 0 <= new_col < 9 and board[
+                new_row][new_col] == ' ':
                 return new_row, new_col
 
     while True:
