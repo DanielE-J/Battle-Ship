@@ -82,7 +82,7 @@ def validate_input(guess):
     """
     Validates user input for the guess.
     """
-    msg_invalid="Invalid input format. Use a letter (A-I) followed by a number (1-9)."
+    msg_invalid = "Invalid input format. Use a letter (A-I) followed by a number (1-9)."
     if len(guess) < 2 or len(guess) > 3:
         print(msg_invalid)
         return False
