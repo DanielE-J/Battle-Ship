@@ -44,7 +44,8 @@ def place_ships(board):
     def is_valid_placement(row, col, size, orientation):
         if orientation == 'horizontal':
             if col + size > 9 or any(
-                board[row][col + i] != ' ' for i in range(size)):
+                board[row][col + i] != ' ' for i in range(size)
+            ):
                 return False
         else:
             if row + size > 9 or any(board[row + i][col] != ' ' for i in range(size)):
