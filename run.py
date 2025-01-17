@@ -29,7 +29,7 @@ def print_board(board, hide_ships=False):
     print('  -------------------')
     for i in range(9):
         row = [
-            symbols[cell] if not (hide_ships and cell == 'O') 
+            symbols[cell] if not (hide_ships and cell == 'O')
             else symbols[' '] for cell in board[i]
             ]
         print(f'{i + 1} |' + '|'.join(row) + '|')
@@ -43,7 +43,8 @@ def place_ships(board):
     """
     def is_valid_placement(row, col, size, orientation):
         if orientation == 'horizontal':
-            if col + size > 9 or any(board[row][col + i] != ' ' for i in range(size)):
+            if col + size > 9 or any(
+                board[row][col + i] != ' ' for i in range(size)):
                 return False
         else:
             if row + size > 9 or any(board[row + i][col] != ' ' for i in range(size)):
