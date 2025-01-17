@@ -294,15 +294,10 @@ The testing approach is as follows:
 
 ## Bugs
 
-I did not write down all the bugs this time unfortunately, this were the few i still have in my mind.
-
 | **Bug** | **Fix** |
 | ------- | ------- |
 |I did not manage to get Git hub and Heroku to work togheter|Had to create a whole new account with same email on both|
 |Did not get the emojis to work propperly| Had to put them all togheter like this 'X': '🔥'| 
-
-
-
 
 
 ## Deployment
