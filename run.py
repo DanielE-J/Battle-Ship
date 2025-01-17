@@ -146,7 +146,7 @@ def play_game():
     print_board(player_board)
 
     while True:
-        guess = input('Enter your guess (e.g. A1), or type "exit" to quit: ').strip()
+        guess = input('Enter your guess, or type "exit" to quit: ').strip()
 
         if guess.lower() == 'exit':
             print('Quitting the game... Goodbye! 👋')
@@ -193,7 +193,8 @@ def play_game():
                         player_ships_sunk[ship] = True
         else:
             player_board[computer_row][computer_col] = 'M'
-            print(f'Enemy missed! 🌊 (Enemy guessed {chr(computer_col + ord("A"))}{computer_row + 1})')
+            print(f'Enemy missed! 🌊 (Enemy guessed {chr(
+                computer_col + ord("A"))}{computer_row + 1})')
             last_hit = None
 
         if all(player_ships_sunk.values()):
