@@ -28,7 +28,10 @@ def print_board(board, hide_ships=False):
     print('   A B C D E F G H I')
     print('  -------------------')
     for i in range(9):
-        row = [symbols[cell] if not (hide_ships and cell == 'O') else symbols[' '] for cell in board[i]]
+        row = [
+            symbols[cell] if not (hide_ships and cell == 'O') 
+            else symbols[' '] for cell in board[i]
+            ]
         print(f'{i + 1} |' + '|'.join(row) + '|')
         print('  -------------------')
 
@@ -75,8 +78,9 @@ def validate_input(guess):
     """
     Validates user input for the guess.
     """
+    msg_invalid="Invalid input format. Use a letter (A-I) followed by a number (1-9)."
     if len(guess) < 2 or len(guess) > 3:
-        print("Invalid input format. Use a letter (A-I) followed by a number (1-9).")
+        print(msg_invalid)
         return False
     col, row = guess[0].upper(), guess[1:]
     if col not in 'ABCDEFGHI' or not row.isdigit() or not (1 <= int(row) <= 9):
