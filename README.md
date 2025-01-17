@@ -29,6 +29,7 @@ Live site: https://dej-battle-ship-09b38984d0bb.herokuapp.com/
     2. [Game hit miss emoji](#Game-hit-miss-emoji)
     3. [Game hit miss text](#Game-hit-miss-text)
     4. [Game Win](#Game-Win)
+    5. [Exit Game](#Exit-Game)
 7. [Validation](#validation)
 8. [Testing](#testing)
     1. [Manual Testing](#manual-testing)  
