@@ -26,8 +26,8 @@ Live site: https://dej-battle-ship-09b38984d0bb.herokuapp.com/
     2. [Frameworks & Tools](#frameworks-&-tools)
 6. [Features](#features)
     1. [Main menu](#Main-menu)
-    2. [Game hit/miss emoji](#Game-hit/miss-emoji)
-    3. [Game hit/miss text](#Game-hit/miss-text)
+    2. [Game hit miss emoji](#Game-hit-miss-emoji)
+    3. [Game hit miss text](#Game-hit-miss-text)
     4. [Game Win](#Game-Win)
 7. [Validation](#validation)
 8. [Testing](#testing)
@@ -158,7 +158,7 @@ The following flowchart summarises the structure and logic of the application.
 ![Main menu](readme_images/userstory1,2.jpg)
 </details>
 
-### Game hit/miss emoji
+### Game hit miss emoji
 
 * Will show the user emoji when you get a hit.
 * Will show the user emoji when you get a miss.
@@ -170,7 +170,7 @@ The following flowchart summarises the structure and logic of the application.
 ![Main menu](readme_images/hitandmiss.jpg)
 </details>
 
-### Game hit/miss text
+### Game hit miss text
 
 * Will show the user text  when you get a hit.
 * Will show the user text when you get a miss.
