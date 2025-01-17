@@ -128,7 +128,7 @@ Welcome to my Battle-ship game, Hope you will enjoy it.
 The following flowchart summarises the structure and logic of the application.
 
 <details><summary>Flowchart</summary>
-<img src="">
+<img src="readme_images/Flowchart.jpg">
 </details>
 
 ## Technologies
