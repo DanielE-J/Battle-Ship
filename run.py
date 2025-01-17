@@ -48,7 +48,9 @@ def place_ships(board):
             ):
                 return False
         else:
-            if row + size > 9 or any(board[row + i][col] != ' ' for i in range(size)):
+            if row + size > 9 or any(
+                board[row + i][col] != ' ' for i in range(size)
+            ):
                 return False
         return True
 
