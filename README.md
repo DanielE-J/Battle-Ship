@@ -17,7 +17,7 @@ Live site: https://dej-battle-ship-09b38984d0bb.herokuapp.com/
     1. [Target Audience](#target-audience)
     2. [User Requirements and Expectations](#user-requirements-and-expectations)
     3. [User Manual](#user-manual)
-    4. [Users](#users-stories)
+    4. [Users](#users-)
     5. [Site Owner](#site-owner)
 4. [Technical Design](#technical-design)
     1. [Flowchart](#flowchart)    
