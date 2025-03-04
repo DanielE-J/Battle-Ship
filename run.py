@@ -97,23 +97,24 @@ def computer_guess(board, last_hit=None):
     """
     Computer guesses. If last_hit is provided, guesses adjacent cells first.
     """
+    # If a hit has occurred, prioritize adjacent cells
     if last_hit:
         row, col = last_hit
-        # Directions: right, down, left, up
-        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # right, down, left, up
         random.shuffle(directions)  # Randomize directions to add unpredictability
         
         for dr, dc in directions:
             new_row, new_col = row + dr, col + dc
             if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
-                return new_row, new_col
+                return new_row, new_col  # Return first valid adjacent guess
 
-    # If no last hit or no valid adjacent spots, choose a random empty cell
+    # If no hit or no valid adjacent spots, choose a random empty cell
     while True:
         row = random.randint(0, 8)
         col = random.randint(0, 8)
-        if board[row][col] == ' ':
+        if board[row][col] == ' ':  # Ensure the cell is empty
             return row, col
+
 
 
 def is_ship_sunk(ship_positions, board, ship):
