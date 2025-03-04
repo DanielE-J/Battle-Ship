@@ -93,26 +93,35 @@ def validate_input(guess):
     return True
 
 
-def computer_guess(board, last_hit=None):
+def computer_guess(board, last_hit=None, previous_guesses=set()):
     """
     Computer guesses. If last_hit is provided, guesses adjacent cells first.
+    If no last_hit or no valid adjacent spots, chooses a random empty cell.
+    
+    :param board: The current game board
+    :param last_hit: The last cell where the computer hit a ship (row, col)
+    :param previous_guesses: A set of previously guessed coordinates
+    :return: The next guess (row, col)
     """
     if last_hit:
         row, col = last_hit
         # Directions: right, down, left, up
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        random.shuffle(directions)  # Randomize directions to add unpredictability
+        random.shuffle(directions)  # Randomize directions for unpredictability
         
         for dr, dc in directions:
             new_row, new_col = row + dr, col + dc
-            if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
-                return new_row, new_col
+            if 0 <= new_row < 9 and 0 <= new_col < 9:
+                if board[new_row][new_col] == ' ' and (new_row, new_col) not in previous_guesses:
+                    previous_guesses.add((new_row, new_col))
+                    return new_row, new_col
 
     # If no last hit or no valid adjacent spots, choose a random empty cell
     while True:
         row = random.randint(0, 8)
         col = random.randint(0, 8)
-        if board[row][col] == ' ':
+        if board[row][col] == ' ' and (row, col) not in previous_guesses:
+            previous_guesses.add((row, col))
             return row, col
 
 
