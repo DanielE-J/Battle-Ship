@@ -11,31 +11,46 @@ ships = {
     'Destroyer': 2
 }
 
+
 def create_board():
-    """Creates a 9x9 empty board initialized with ' '."""
+    """
+    Creates a 9x9 empty board initialized with ' '.
+    """
     return [[' '] * 9 for _ in range(9)]
 
+
 def print_board(board, hide_ships=False):
-    """Prints the board with row numbers and column letters. Optionally hides ships."""
+    """
+    Prints the board with row numbers and column letters.
+    Optionally hides ships ('O') if hide_ships is True.
+    """
     symbols = {' ': '⬜', 'O': '🚢', 'X': '🔥', 'M': '🌊'}
     print('   A B C D E F G H I')
     print('  -------------------')
     for i in range(9):
         row = [
-            symbols[cell] if not (hide_ships and cell == 'O') else symbols[' ']
-            for cell in board[i]
-        ]
+            symbols[cell] if not (hide_ships and cell == 'O')
+            else symbols[' '] for cell in board[i]
+            ]
         print(f'{i + 1} |' + '|'.join(row) + '|')
         print('  -------------------')
 
+
 def place_ships(board):
-    """Randomly places ships on the board."""
+    """
+    Randomly places ships on the board.
+    Ensures ships do not overlap or touch each other.
+    """
     def is_valid_placement(row, col, size, orientation):
         if orientation == 'horizontal':
-            if col + size > 9 or any(board[row][col + i] != ' ' for i in range(size)):
+            if col + size > 9 or any(
+                board[row][col + i] != ' ' for i in range(size)
+            ):
                 return False
         else:
-            if row + size > 9 or any(board[row + i][col] != ' ' for i in range(size)):
+            if row + size > 9 or any(
+                board[row + i][col] != ' ' for i in range(size)
+            ):
                 return False
         return True
 
@@ -62,8 +77,11 @@ def place_ships(board):
                 placed = True
     return ship_positions
 
+
 def validate_input(guess):
-    """Validates user input for the guess."""
+    """
+    Validates user input for the guess.
+    """
     msg_invalid = "Invalid input format. Use a letter (A-I) and number (1-9)."
     if len(guess) < 2 or len(guess) > 3:
         print(msg_invalid)
@@ -74,12 +92,50 @@ def validate_input(guess):
         return False
     return True
 
+
+def computer_guess(board, last_hit=None, previous_guesses=set()):
+    """
+    Computer guesses. If last_hit is provided, guesses adjacent cells first.
+    If no last_hit or no valid adjacent spots, chooses a random empty cell.
+    
+    :param board: The current game board
+    :param last_hit: The last cell where the computer hit a ship (row, col)
+    :param previous_guesses: A set of previously guessed coordinates
+    :return: The next guess (row, col)
+    """
+    if last_hit:
+        row, col = last_hit
+        # Directions: right, down, left, up
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        random.shuffle(directions)  # Randomize directions for unpredictability
+        
+        for dr, dc in directions:
+            new_row, new_col = row + dr, col + dc
+            if 0 <= new_row < 9 and 0 <= new_col < 9:
+                if board[new_row][new_col] == ' ' and (new_row, new_col) not in previous_guesses:
+                    previous_guesses.add((new_row, new_col))
+                    return new_row, new_col
+
+    # If no last hit or no valid adjacent spots, choose a random empty cell
+    while True:
+        row = random.randint(0, 8)
+        col = random.randint(0, 8)
+        if board[row][col] == ' ' and (row, col) not in previous_guesses:
+            previous_guesses.add((row, col))
+            return row, col
+
+
 def is_ship_sunk(ship_positions, board, ship):
-    """Checks if all parts of the specified ship are hit ('X')."""
+    """
+    Checks if all parts of the specified ship are hit ('X').
+    """
     return all(board[row][col] == 'X' for row, col in ship_positions[ship])
 
+
 def play_game():
-    """Main game loop where player and computer alternate turns."""
+    """
+    Main game loop where player and computer alternate turns.
+    """
     name = input('Enter your name: ').strip()
     while not name or re.match(r'^\d', name):
         print('Invalid name. Please enter a valid name.')
@@ -149,7 +205,8 @@ def play_game():
                         player_ships_sunk[ship] = True
         else:
             player_board[computer_row][computer_col] = 'M'
-            print(f'Enemy missed! 🌊 (Enemy guessed {chr(computer_col + ord("A"))}{computer_row + 1})')
+            print(f'Enemy missed! 🌊 (Enemy guessed {chr(
+                computer_col + ord("A"))}{computer_row + 1})')
             last_hit = None
 
         if all(player_ships_sunk.values()):
@@ -161,10 +218,14 @@ def play_game():
         print('Computer Board:')
         print_board(computer_board, hide_ships=True)
 
+
 def main():
-    """Entry point of the program."""
+    """
+    Entry point of the program.
+    """
     print("Welcome to Battleship! 🚢")
-    print("""Instructions:
+    print("""
+    Instructions:
     1. Enter your name when prompted.
     2. The game will create a 9x9 board for you and the computer.
     3. Ships will be placed randomly on the board.
@@ -173,9 +234,11 @@ def main():
     6. The computer will also guess the location of your ships.
     7. The first to sink all the opponent's ships wins the game.
     8. You can exit the game at any time by typing 'exit' during your turn.
-    Have fun playing Battleship! 🎮""")
+    Have fun playing Battleship! 🎮
+    """)
     play_game()
     print('Thanks for playing Battleship! 👋')
+
 
 if __name__ == '__main__':
     main()
