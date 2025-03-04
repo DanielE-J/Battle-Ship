@@ -93,20 +93,27 @@ def validate_input(guess):
     return True
 
 
-def computer_guess(board):
+def computer_guess(board, last_hit=None):
     """
-    This function generates a random guess for the computer player.
-    It randomly selects a row and column on the board that has not been
-    guessed before.
-    If the selected cell is empty or contains a ship, it returns the row
-    and column.
+    Computer guesses. If last_hit is provided, guesses adjacent cells first.
     """
+    if last_hit:
+        row, col = last_hit
+        # Directions: right, down, left, up
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        random.shuffle(directions)  # Randomize directions to add unpredictability
+        
+        for dr, dc in directions:
+            new_row, new_col = row + dr, col + dc
+            if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
+                return new_row, new_col
+
+    # If no last hit or no valid adjacent spots, choose a random empty cell
     while True:
         row = random.randint(0, 8)
         col = random.randint(0, 8)
-        if board[row][col] == ' ' or board[row][col] == 'O':
+        if board[row][col] == ' ':
             return row, col
-
 
 
 def is_ship_sunk(ship_positions, board, ship):
