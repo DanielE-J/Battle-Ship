@@ -11,7 +11,6 @@ ships = {
     'Destroyer': 2
 }
 
-
 def create_board():
     """
     Creates a 9x9 empty board initialized with ' '.
@@ -108,7 +107,6 @@ def computer_guess(board):
             return row, col
 
 
-
 def is_ship_sunk(ship_positions, board, ship):
     """
     Checks if all parts of the specified ship are hit ('X').
@@ -126,11 +124,13 @@ def play_game():
         name = input('Enter your name: ').strip()
 
     input('Press Enter to start the game...')
+    time.sleep(1)  # Added delay here
 
     player_board = create_board()
     computer_board = create_board()
 
     print('Placing ships on the boards... 🌊')
+    time.sleep(1)  # Added delay here
     player_ship_positions = place_ships(player_board)
     computer_ship_positions = place_ships(computer_board)
     player_ships_sunk = {ship: False for ship in ships}
@@ -140,12 +140,14 @@ def play_game():
 
     print('Player Board:')
     print_board(player_board)
+    time.sleep(1)  # Added delay here
 
     while True:
         guess = input('Enter your guess, or type "exit" to quit: ').strip()
 
         if guess.lower() == 'exit':
             print('Quitting the game... Goodbye! 👋')
+            time.sleep(1)  # Added delay here
             break
 
         if not validate_input(guess):
@@ -156,6 +158,7 @@ def play_game():
 
         if (row, col) in guessed_coords:
             print('You have already guessed that coordinate. Try again. ⛔')
+            time.sleep(1)  # Added delay here
             continue
 
         guessed_coords.add((row, col))
@@ -163,17 +166,21 @@ def play_game():
         if computer_board[row][col] == 'O':
             computer_board[row][col] = 'X'
             print('Hit! 🎯')
+            time.sleep(1)  # Added delay here
             for ship in ships:
                 if is_ship_sunk(computer_ship_positions, computer_board, ship):
                     if not computer_ships_sunk[ship]:
                         print(f"You sunk the enemy's {ship}! 🚩")
+                        time.sleep(1)  # Added delay here
                         computer_ships_sunk[ship] = True
         else:
             computer_board[row][col] = 'M'
             print('Miss! 🌊')
+            time.sleep(1)  # Added delay here
 
         if all(computer_ships_sunk.values()):
             print("Victory! You sunk all the enemy's ships! 🏆")
+            time.sleep(1)  # Added delay here
             break
 
         computer_row, computer_col = computer_guess(player_board, last_hit)
@@ -181,26 +188,32 @@ def play_game():
         if player_board[computer_row][computer_col] == 'O':
             player_board[computer_row][computer_col] = 'X'
             print('Enemy hit your ship! 💥')
+            time.sleep(1)  # Added delay here
             last_hit = (computer_row, computer_col)
             for ship in ships:
                 if is_ship_sunk(player_ship_positions, player_board, ship):
                     if not player_ships_sunk[ship]:
                         print(f'The enemy sunk your {ship}! 💣')
+                        time.sleep(1)  # Added delay here
                         player_ships_sunk[ship] = True
         else:
             player_board[computer_row][computer_col] = 'M'
             print(f'Enemy missed! 🌊 (Enemy guessed {chr(
                 computer_col + ord("A"))}{computer_row + 1})')
+            time.sleep(1)  # Added delay here
             last_hit = None
 
         if all(player_ships_sunk.values()):
             print('Defeat! The enemy sunk all your ships! 😭')
+            time.sleep(1)  # Added delay here
             break
 
         print('Player Board:')
         print_board(player_board)
+        time.sleep(1)  # Added delay here
         print('Computer Board:')
         print_board(computer_board, hide_ships=True)
+        time.sleep(1)  # Added delay here
 
 
 def main():
@@ -220,8 +233,10 @@ def main():
     8. You can exit the game at any time by typing 'exit' during your turn.
     Have fun playing Battleship! 🎮
     """)
+    time.sleep(1)  # Added delay here
     play_game()
     print('Thanks for playing Battleship! 👋')
+    time.sleep(1)  # Added delay here
 
 
 if __name__ == '__main__':
