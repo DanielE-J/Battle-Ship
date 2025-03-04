@@ -93,11 +93,22 @@ def validate_input(guess):
     return True
 
 
-def computer_guess(board, last_hit=None):
+def computer_guess(board, last_hit=None, hit_direction=None):
     """
-    Computer guesses. If last_hit is provided, guesses adjacent cells first.
+    Computer guesses. If last_hit is provided, guesses adjacent cells first, prioritizing a targeted area.
+    The hit_direction is used to guide the computer to continue attacking along the ship's direction.
     """
-    # If a hit has occurred, prioritize adjacent cells
+    # If a hit has occurred and a direction is known, continue attacking in that direction
+    if last_hit and hit_direction:
+        row, col = last_hit
+        dr, dc = hit_direction  # Direction to continue attacking
+
+        # Continue in the same direction (dr, dc)
+        new_row, new_col = row + dr, col + dc
+        if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
+            return new_row, new_col
+
+    # If no hit or no known direction, try adjacent cells to the last hit
     if last_hit:
         row, col = last_hit
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # right, down, left, up
@@ -114,6 +125,24 @@ def computer_guess(board, last_hit=None):
         col = random.randint(0, 8)
         if board[row][col] == ' ':  # Ensure the cell is empty
             return row, col
+
+def update_hit_direction(last_hit, row, col):
+    """
+    Based on the last hit and the new hit position, determine the direction of the ship's orientation.
+    """
+    # If the last hit is directly next to the current hit, calculate the direction
+    if row == last_hit[0]:  # Same row, so the ship is horizontal
+        if col > last_hit[1]:
+            return (0, 1)  # Move right
+        else:
+            return (0, -1)  # Move left
+    elif col == last_hit[1]:  # Same column, so the ship is vertical
+        if row > last_hit[0]:
+            return (1, 0)  # Move down
+        else:
+            return (-1, 0)  # Move up
+    return None
+
 
 
 
