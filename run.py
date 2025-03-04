@@ -93,37 +93,21 @@ def validate_input(guess):
     return True
 
 
-def computer_guess(board, last_hit=None, previous_guesses=set()):
-    """
-    Computer guesses. If last_hit is provided, guesses adjacent cells first.
-    If no last_hit or no valid adjacent spots, chooses a random empty cell.
-    
-    :param board: The current game board
-    :param last_hit: The last cell where the computer hit a ship (row, col)
-    :param previous_guesses: A set of previously guessed coordinates
-    :return: The next guess (row, col)
-    """
-    if last_hit:
-        row, col = last_hit
-        # Directions: right, down, left, up
+def computer_guess(board, previous_hits=None):
+    if previous_hits:
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        random.shuffle(directions)  # Randomize directions for unpredictability
-        
-        for dr, dc in directions:
-            new_row, new_col = row + dr, col + dc
-            if 0 <= new_row < 9 and 0 <= new_col < 9:
-                if board[new_row][new_col] == ' ' and (new_row, new_col) not in previous_guesses:
-                    previous_guesses.add((new_row, new_col))
-                    return new_row, new_col
+        random.shuffle(directions)
 
-    # If no last hit or no valid adjacent spots, choose a random empty cell
+        for dr, dc in directions:
+            new_row, new_col = previous_hits[0] + dr, previous_hits[1] + dc
+            if 0 <= new_row < 9 and 0 <= new_col < 9:
+                if board[new_row][new_col] == ' ':
+                    return new_row, new_col
     while True:
         row = random.randint(0, 8)
         col = random.randint(0, 8)
-        if board[row][col] == ' ' and (row, col) not in previous_guesses:
-            previous_guesses.add((row, col))
+        if board[row][col] == ' ':
             return row, col
-
 
 def is_ship_sunk(ship_positions, board, ship):
     """
