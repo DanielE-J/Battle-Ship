@@ -117,144 +117,89 @@ def is_ship_sunk(ship_positions, board, ship):
 
 def play_game():
     """
-    This function is the main game loop where the player and
-    computer take turns guessing each other's ships.
-    It displays the player's board, the computer's board,
-    and prompts the player to enter a guess.
-    The player can enter 'exit' to quit the game at any time.
-    The game continues until all the ships of either
-    the player or the computer have been sunk.
-    It also keeps track of the number of guesses made by the player
-    and the computer.
+    Main game loop where player and computer alternate turns.
     """
-
-    time.sleep(1)
-
-    # Validate name input
-    name = input('Enter your name: ')
-    while not validate_name(name):
+    name = input('Enter your name: ').strip()
+    while not name or re.match(r'^\d', name):
         print('Invalid name. Please enter a valid name.')
-        name = input('Enter your name: ')
-        time.sleep(1)
+        name = input('Enter your name: ').strip()
 
-    time.sleep(1)
     input('Press Enter to start the game...')
 
-    global ships
     player_board = create_board()
     computer_board = create_board()
 
-    print('Placing ships on the board... 🌊 🌊 🌊 🌊 🌊')
-    time.sleep(1)
-
+    print('Placing ships on the boards... 🌊')
     player_ship_positions = place_ships(player_board)
     computer_ship_positions = place_ships(computer_board)
     player_ships_sunk = {ship: False for ship in ships}
     computer_ships_sunk = {ship: False for ship in ships}
-    guesses = 0
-    # Set to store guessed coordinates
     guessed_coords = set()
+    last_hit = None
 
     print('Player Board:')
     print_board(player_board)
 
     while True:
-        guess = input('Enter your guess (e.g. A1), or type "exit" to quit: ')
-        time.sleep(1)
+        guess = input('Enter your guess, or type "exit" to quit: ').strip()
 
-        # Check if the player wants to exit
         if guess.lower() == 'exit':
-            print('Quitting the game...Traitor!😈')
-            return name
-        time.sleep(1)
+            print('Quitting the game... Goodbye! 👋')
+            break
 
-        # Check if guess is valid
-        if not validate_input(guess, computer_board):
-            print('Invalid input. Please enter a valid guess. 💀')
+        if not validate_input(guess):
             continue
-        time.sleep(1)
 
-        # Check if guess has already been made
-        col = guess[0].upper()
+        col = ord(guess[0].upper()) - ord('A')
         row = int(guess[1:]) - 1
-        if (row, ord(col) - ord('A')) in guessed_coords:
+
+        if (row, col) in guessed_coords:
             print('You have already guessed that coordinate. Try again. ⛔')
             continue
-        time.sleep(1)
 
-        # Add current guess to guessed coordinates
-        guessed_coords.add((row, ord(col) - ord('A')))
+        guessed_coords.add((row, col))
 
-        # Process the guess
-        # Now guessing on computer's board
-        if computer_board[row][ord(col) - ord('A')] == 'O':
-            computer_board[row][ord(col) - ord('A')] = 'X'
-            print(f'{name} Hit an enemy ship! 🎯')
-            # Add delay for dramatic effect
-            time.sleep(1)
-
-            # Check if a ship has been sunk
+        if computer_board[row][col] == 'O':
+            computer_board[row][col] = 'X'
+            print('Hit! 🎯')
             for ship in ships:
                 if is_ship_sunk(computer_ship_positions, computer_board, ship):
                     if not computer_ships_sunk[ship]:
-                        print(f'{name} sunk the enemy\'s {ship}! 🚩')
+                        print(f"You sunk the enemy's {ship}! 🚩")
                         computer_ships_sunk[ship] = True
-                        time.sleep(1)
-
         else:
-            computer_board[row][ord(col) - ord('A')] = 'M'
-            print(f'{name} missed enemy ship🌊 🚫')
-            time.sleep(1)
+            computer_board[row][col] = 'M'
+            print('Miss! 🌊')
 
-        guesses += 1
         if all(computer_ships_sunk.values()):
-            print('Victory! You sunk all the enemy\'s ships. You win! 🏆')
-            print(f'Total Guesses: {guesses}')
+            print("Victory! You sunk all the enemy's ships! 🏆")
             break
-        time.sleep(1)
 
-        # Now computer guesses on player's board
-        computer_row, computer_col = computer_guess(player_board)
+        computer_row, computer_col = computer_guess(player_board, last_hit)
 
-        # Now guessing on player's board
         if player_board[computer_row][computer_col] == 'O':
             player_board[computer_row][computer_col] = 'X'
             print('Enemy hit your ship! 💥')
-
-            # Add delay for dramatic effect
-            time.sleep(1)
-
-            # Check if a ship has been sunk
+            last_hit = (computer_row, computer_col)
             for ship in ships:
                 if is_ship_sunk(player_ship_positions, player_board, ship):
                     if not player_ships_sunk[ship]:
                         print(f'The enemy sunk your {ship}! 💣')
                         player_ships_sunk[ship] = True
-                        time.sleep(1)
-
         else:
             player_board[computer_row][computer_col] = 'M'
-            print('Enemy missed your ship! 🚫')
-            time.sleep(1)
-            print("Enemy guessed: "
-                  f"{chr(computer_col + ord('A'))}{computer_row + 1}")
-            time.sleep(1)
+            print(f'Enemy missed! 🌊 (Enemy guessed {chr(
+                computer_col + ord("A"))}{computer_row + 1})')
+            last_hit = None
 
-        guesses += 1
         if all(player_ships_sunk.values()):
-            print('Defeat! The enemy sunk all your ships. You lose. 😭')
-            time.sleep(1)
-            print(f'Total Guesses: {guesses}')
-            time.sleep(1)
+            print('Defeat! The enemy sunk all your ships! 😭')
             break
+
         print('Player Board:')
         print_board(player_board)
         print('Computer Board:')
         print_board(computer_board, hide_ships=True)
-
-        time.sleep(1)
-
-    return name
 
 
 def main():
