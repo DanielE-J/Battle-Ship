@@ -227,11 +227,8 @@ def main():
     8. You can exit the game at any time by typing 'exit' during your turn.
     Have fun playing Battleship! 🎮
     """)
-
-    player_name = play_game()
-    time.sleep(1)
-    print(f'Thanks for playing! Goodbye, {player_name}! 👋')
-
+    play_game()
+    print('Thanks for playing Battleship! 👋')
 
 
 if __name__ == '__main__':
