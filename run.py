@@ -11,7 +11,6 @@ ships = {
     'Destroyer': 2
 }
 
-
 def create_board():
     """
     Creates a 9x9 empty board initialized with ' '.
@@ -138,6 +137,7 @@ def play_game():
     computer_board = create_board()
 
     print('Placing ships on the boards... 🌊')
+    time.sleep(1)
     player_ship_positions = place_ships(player_board)
     computer_ship_positions = place_ships(computer_board)
     player_ships_sunk = {ship: False for ship in ships}
@@ -147,6 +147,7 @@ def play_game():
 
     print('Player Board:')
     print_board(player_board)
+    time.sleep(1)
 
     while True:
         guess = input('Enter your guess, or type "exit" to quit: ').strip()
@@ -170,6 +171,7 @@ def play_game():
         if computer_board[row][col] == 'O':
             computer_board[row][col] = 'X'
             print('Hit! 🎯')
+            time.sleep(1)
             for ship in ships:
                 if is_ship_sunk(computer_ship_positions, computer_board, ship):
                     if not computer_ships_sunk[ship]:
@@ -178,6 +180,7 @@ def play_game():
         else:
             computer_board[row][col] = 'M'
             print('Miss! 🌊')
+            time.sleep(1)
 
         if all(computer_ships_sunk.values()):
             print("Victory! You sunk all the enemy's ships! 🏆")
@@ -188,6 +191,7 @@ def play_game():
         if player_board[computer_row][computer_col] == 'O':
             player_board[computer_row][computer_col] = 'X'
             print('Enemy hit your ship! 💥')
+            time.sleep(1)
             last_hit = (computer_row, computer_col)
             for ship in ships:
                 if is_ship_sunk(player_ship_positions, player_board, ship):
@@ -196,9 +200,9 @@ def play_game():
                         player_ships_sunk[ship] = True
         else:
             player_board[computer_row][computer_col] = 'M'
-            print(f'Enemy missed! 🌊 (Enemy guessed {chr(
-                computer_col + ord("A"))}{computer_row + 1})')
+            print(f'Enemy missed! 🌊 (Enemy guessed {chr(computer_col + ord("A"))}{computer_row + 1})')
             last_hit = None
+            time.sleep(1)
 
         if all(player_ships_sunk.values()):
             print('Defeat! The enemy sunk all your ships! 😭')
@@ -206,8 +210,10 @@ def play_game():
 
         print('Player Board:')
         print_board(player_board)
+        time.sleep(1)
         print('Computer Board:')
         print_board(computer_board, hide_ships=True)
+        time.sleep(1)
 
 
 def main():
@@ -227,11 +233,10 @@ def main():
     8. You can exit the game at any time by typing 'exit' during your turn.
     Have fun playing Battleship! 🎮
     """)
-
+    time.sleep(1)
     player_name = play_game()
     time.sleep(1)
     print(f'Thanks for playing! Goodbye, {player_name}! 👋')
-
 
 
 if __name__ == '__main__':
