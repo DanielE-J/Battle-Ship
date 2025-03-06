@@ -92,13 +92,15 @@ def validate_input(guess):
     return True
 
 
-def computer_guess(board, last_hit=None):
+def computer_guess(board, last_hit=None, target_ships=None):
     """
-    Computer guesses. If last_hit is provided, guesses adjacent cells first.
+    Computer guesses intelligently based on previous hits.
+    If last_hit is provided, it will target adjacent cells.
+    If no last hit, it will choose a random empty cell.
     """
     if last_hit:
         row, col = last_hit
-        # Directions: right, down, left, up
+        # Directions to check: right, down, left, up
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         random.shuffle(directions)  # Randomize directions to add unpredictability
         
@@ -107,7 +109,7 @@ def computer_guess(board, last_hit=None):
             if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
                 return new_row, new_col
 
-    # If no last hit or no valid adjacent spots, choose a random empty cell
+    # If no last hit, choose a random empty cell
     while True:
         row = random.randint(0, 8)
         col = random.randint(0, 8)
