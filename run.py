@@ -1,6 +1,7 @@
 import random
 import re
 import time
+import emoji
 
 # Define ships globally
 ships = {
@@ -13,13 +14,9 @@ ships = {
 
 def create_board():
     """
-    This function creates a 9x9 empty board with all cells initialized to ' '.
+    Creates a 9x9 empty board initialized with ' '.
     """
-    board = []
-    for _ in range(9):
-        row = [' '] * 9
-        board.append(row)
-    return board
+    return [[' '] * 9 for _ in range(9)]
 
 
 def print_board(board, hide_ships=False):
@@ -96,34 +93,27 @@ def validate_input(guess):
     return True
 
 
-def computer_guess(board, last_hit=None, previous_guesses=set()):
+def computer_guess(board, last_hit=None):
     """
-    Computer guesses with an improved targeting strategy.
-    If last_hit is provided, it prioritizes adjacent cells first.
+    Computer guesses. If last_hit is provided, guesses adjacent cells first.
     """
-    # If the last guess was a hit, prioritize adjacent cells
     if last_hit:
         row, col = last_hit
         # Directions: right, down, left, up
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        random.shuffle(directions)  # Randomize directions for unpredictability
-
-        # Try adjacent cells in random order
+        random.shuffle(directions)  # Randomize directions to add unpredictability
+        
         for dr, dc in directions:
             new_row, new_col = row + dr, col + dc
             if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
-                if (new_row, new_col) not in previous_guesses:
-                    previous_guesses.add((new_row, new_col))
-                    return new_row, new_col
+                return new_row, new_col
 
-    # If no recent hit, or no valid adjacent cells, choose a random empty cell
+    # If no last hit or no valid adjacent spots, choose a random empty cell
     while True:
         row = random.randint(0, 8)
         col = random.randint(0, 8)
-        if board[row][col] == ' ' and (row, col) not in previous_guesses:
-            previous_guesses.add((row, col))
+        if board[row][col] == ' ':
             return row, col
-
 
 
 def is_ship_sunk(ship_positions, board, ship):
@@ -154,8 +144,7 @@ def play_game():
     player_ships_sunk = {ship: False for ship in ships}
     computer_ships_sunk = {ship: False for ship in ships}
     guessed_coords = set()
-    last_hit = None  # Keep track of the last hit for targeted guessing
-    previous_computer_guesses = set()  # Track computer's guesses
+    last_hit = None
 
     print('Player Board:')
     print_board(player_board)
@@ -198,14 +187,13 @@ def play_game():
             print("Victory! You sunk all the enemy's ships! 🏆")
             break
 
-        # Computer makes its guess
-        computer_row, computer_col = computer_guess(player_board, last_hit, previous_computer_guesses)
+        computer_row, computer_col = computer_guess(player_board, last_hit)
 
         if player_board[computer_row][computer_col] == 'O':
             player_board[computer_row][computer_col] = 'X'
             print('Enemy hit your ship! 💥')
             time.sleep(1)
-            last_hit = (computer_row, computer_col)  # Update the last hit for the next round
+            last_hit = (computer_row, computer_col)
             for ship in ships:
                 if is_ship_sunk(player_ship_positions, player_board, ship):
                     if not player_ships_sunk[ship]:
@@ -234,7 +222,7 @@ def main():
     Entry point of the program.
     """
     print("Welcome to Battleship! 🚢")
-    print("""
+    print(""" 
     Instructions:
     1. Enter your name when prompted.
     2. The game will create a 9x9 board for you and the computer.
