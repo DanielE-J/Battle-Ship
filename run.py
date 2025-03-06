@@ -92,19 +92,51 @@ def validate_input(guess):
     return True
 
 
-def computer_guess(board, last_hit=None, target_ships=None):
+def computer_guess(board, last_hit=None):
     """
     Computer guesses intelligently based on previous hits.
     If last_hit is provided, it will target adjacent cells.
     If no last hit, it will choose a random empty cell.
     """
-    # If no last hit, choose a random empty cell
-    while True:
-        row = random.randint(0, 8)
-        col = random.randint(0, 8)
-        if board[row][col] == ' ':
-            return row, col
+    # Initialize lists to track hits and misses
+    hits = []
+    misses = []
+    
+    def adjacent_cells(row, col):
+        """Returns a list of valid adjacent cells (up, down, left, right)."""
+        adjacent = []
+        if row > 0: adjacent.append((row - 1, col))  # Up
+        if row < 8: adjacent.append((row + 1, col))  # Down
+        if col > 0: adjacent.append((row, col - 1))  # Left
+        if col < 8: adjacent.append((row, col + 1))  # Right
+        return adjacent
 
+    # If there's a last hit, try surrounding cells first
+    if last_hit:
+        row, col = last_hit
+        possible_moves = adjacent_cells(row, col)
+        # Filter out moves that are either already hit or missed
+        possible_moves = [
+            (r, c) for (r, c) in possible_moves if board[r][c] == ' ' and (r, c) not in misses
+        ]
+        if possible_moves:
+            # Choose a random valid adjacent cell
+            row, col = random.choice(possible_moves)
+        else:
+            # If no valid adjacent cells, pick a random empty space
+            while True:
+                row, col = random.randint(0, 8), random.randint(0, 8)
+                if board[row][col] == ' ' and (row, col) not in misses:
+                    break
+    else:
+        # If no hits yet, guess randomly
+        while True:
+            row, col = random.randint(0, 8), random.randint(0, 8)
+            if board[row][col] == ' ' and (row, col) not in misses:
+                break
+
+    # Return the guess (row, col)
+    return row, col
 
 def is_ship_sunk(ship_positions, board, ship):
     """
