@@ -98,10 +98,6 @@ def computer_guess(board, last_hit=None):
     If last_hit is provided, it will target adjacent cells.
     If no last hit, it will choose a random empty cell.
     """
-    # Initialize lists to track hits and misses
-    hits = []
-    misses = []
-    
     def adjacent_cells(row, col):
         """Returns a list of valid adjacent cells (up, down, left, right)."""
         adjacent = []
@@ -117,7 +113,7 @@ def computer_guess(board, last_hit=None):
         possible_moves = adjacent_cells(row, col)
         # Filter out moves that are either already hit or missed
         possible_moves = [
-            (r, c) for (r, c) in possible_moves if board[r][c] == ' ' and (r, c) not in misses
+            (r, c) for (r, c) in possible_moves if board[r][c] == ' '
         ]
         if possible_moves:
             # Choose a random valid adjacent cell
@@ -126,17 +122,18 @@ def computer_guess(board, last_hit=None):
             # If no valid adjacent cells, pick a random empty space
             while True:
                 row, col = random.randint(0, 8), random.randint(0, 8)
-                if board[row][col] == ' ' and (row, col) not in misses:
+                if board[row][col] == ' ':
                     break
     else:
         # If no hits yet, guess randomly
         while True:
             row, col = random.randint(0, 8), random.randint(0, 8)
-            if board[row][col] == ' ' and (row, col) not in misses:
+            if board[row][col] == ' ':
                 break
 
     # Return the guess (row, col)
     return row, col
+
 
 def is_ship_sunk(ship_positions, board, ship):
     """
