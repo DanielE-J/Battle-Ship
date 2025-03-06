@@ -98,17 +98,6 @@ def computer_guess(board, last_hit=None, target_ships=None):
     If last_hit is provided, it will target adjacent cells.
     If no last hit, it will choose a random empty cell.
     """
-    if last_hit:
-        row, col = last_hit
-        # Directions to check: right, down, left, up
-        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        random.shuffle(directions)  # Randomize directions to add unpredictability
-        
-        for dr, dc in directions:
-            new_row, new_col = row + dr, col + dc
-            if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
-                return new_row, new_col
-
     # If no last hit, choose a random empty cell
     while True:
         row = random.randint(0, 8)
