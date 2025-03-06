@@ -92,26 +92,30 @@ def validate_input(guess):
     return True
 
 
-def computer_guess(board, last_hit=None):
+def computer_guess(board, last_hit=None, previous_guesses=set()):
     """
-    Computer guesses. If last_hit is provided, guesses adjacent cells first.
+    Computer guesses with an improved targeting strategy.
+    If last_hit is provided, it prioritizes adjacent cells first.
     """
     if last_hit:
-        row, col = last_hit
         # Directions: right, down, left, up
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        random.shuffle(directions)  # Randomize directions to add unpredictability
-        
-        for dr, dc in directions:
-            new_row, new_col = row + dr, col + dc
-            if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
-                return new_row, new_col
+        random.shuffle(directions)  # Randomize directions for unpredictability
 
-    # If no last hit or no valid adjacent spots, choose a random empty cell
+        # Try adjacent cells in random order
+        for dr, dc in directions:
+            new_row, new_col = last_hit[0] + dr, last_hit[1] + dc
+            if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
+                if (new_row, new_col) not in previous_guesses:
+                    previous_guesses.add((new_row, new_col))
+                    return new_row, new_col
+
+    # If no recent hit, or no valid adjacent cells, choose a random empty cell
     while True:
         row = random.randint(0, 8)
         col = random.randint(0, 8)
-        if board[row][col] == ' ':
+        if board[row][col] == ' ' and (row, col) not in previous_guesses:
+            previous_guesses.add((row, col))
             return row, col
 
 
@@ -144,6 +148,7 @@ def play_game():
     computer_ships_sunk = {ship: False for ship in ships}
     guessed_coords = set()
     last_hit = None
+    previous_computer_guesses = set()  # Track computer's guesses
 
     print('Player Board:')
     print_board(player_board)
@@ -186,13 +191,14 @@ def play_game():
             print("Victory! You sunk all the enemy's ships! 🏆")
             break
 
-        computer_row, computer_col = computer_guess(player_board, last_hit)
+        # Computer makes its guess
+        computer_row, computer_col = computer_guess(player_board, last_hit, previous_computer_guesses)
 
         if player_board[computer_row][computer_col] == 'O':
             player_board[computer_row][computer_col] = 'X'
             print('Enemy hit your ship! 💥')
             time.sleep(1)
-            last_hit = (computer_row, computer_col)
+            last_hit = (computer_row, computer_col)  # Update the last hit for the next round
             for ship in ships:
                 if is_ship_sunk(player_ship_positions, player_board, ship):
                     if not player_ships_sunk[ship]:
@@ -214,6 +220,7 @@ def play_game():
         print('Computer Board:')
         print_board(computer_board, hide_ships=True)
         time.sleep(1)
+
 
 
 def main():
