@@ -14,9 +14,13 @@ ships = {
 
 def create_board():
     """
-    Creates a 9x9 empty board initialized with ' '.
+    This function creates a 9x9 empty board with all cells initialized to ' '.
     """
-    return [[' '] * 9 for _ in range(9)]
+    board = []
+    for _ in range(9):
+        row = [' '] * 9
+        board.append(row)
+    return board
 
 
 def print_board(board, hide_ships=False):
