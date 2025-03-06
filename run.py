@@ -97,14 +97,16 @@ def computer_guess(board, last_hit=None, previous_guesses=set()):
     Computer guesses with an improved targeting strategy.
     If last_hit is provided, it prioritizes adjacent cells first.
     """
+    # If the last guess was a hit, prioritize adjacent cells
     if last_hit:
+        row, col = last_hit
         # Directions: right, down, left, up
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         random.shuffle(directions)  # Randomize directions for unpredictability
 
         # Try adjacent cells in random order
         for dr, dc in directions:
-            new_row, new_col = last_hit[0] + dr, last_hit[1] + dc
+            new_row, new_col = row + dr, col + dc
             if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
                 if (new_row, new_col) not in previous_guesses:
                     previous_guesses.add((new_row, new_col))
@@ -117,6 +119,7 @@ def computer_guess(board, last_hit=None, previous_guesses=set()):
         if board[row][col] == ' ' and (row, col) not in previous_guesses:
             previous_guesses.add((row, col))
             return row, col
+
 
 
 def is_ship_sunk(ship_positions, board, ship):
@@ -147,7 +150,7 @@ def play_game():
     player_ships_sunk = {ship: False for ship in ships}
     computer_ships_sunk = {ship: False for ship in ships}
     guessed_coords = set()
-    last_hit = None
+    last_hit = None  # Keep track of the last hit for targeted guessing
     previous_computer_guesses = set()  # Track computer's guesses
 
     print('Player Board:')
@@ -220,7 +223,6 @@ def play_game():
         print('Computer Board:')
         print_board(computer_board, hide_ships=True)
         time.sleep(1)
-
 
 
 def main():
