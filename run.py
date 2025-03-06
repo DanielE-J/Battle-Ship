@@ -42,59 +42,38 @@ def print_board(board, hide_ships=False):
 
 def place_ships(board):
     """
-    Randomly places ships on the board.
-    Ensures ships do not overlap or touch each other.
+    This function randomly places the ships on the board.
+    It checks if the ship can be placed in the specified orientation
+    (horizontal or vertical) without overlapping with other ships
+    or going out of bounds.
+    If the ship can be placed, it updates the board with
+    the ship's position.
+    The function continues to place ships until all ships
+    have been placed successfully.
     """
-    def is_valid_placement(row, col, size, orientation):
-        if orientation == 'horizontal':
-            if col + size > 9 or any(
-                board[row][col + i] != ' ' for i in range(size)
-            ):
-                return False
-        else:
-            if row + size > 9 or any(
-                board[row + i][col] != ' ' for i in range(size)
-            ):
-                return False
-        return True
-
-    def mark_ship(row, col, size, orientation):
-        positions = []
-        for i in range(size):
-            if orientation == 'horizontal':
-                board[row][col + i] = 'O'
-                positions.append((row, col + i))
-            else:
-                board[row + i][col] = 'O'
-                positions.append((row + i, col))
-        return positions
-
-    ship_positions = {}
+    global ships
+    ship_positions = {ship: [] for ship in ships}
     for ship, size in ships.items():
         placed = False
         while not placed:
             orientation = random.choice(['horizontal', 'vertical'])
-            row = random.randint(0, 8)
-            col = random.randint(0, 8)
-            if is_valid_placement(row, col, size, orientation):
-                ship_positions[ship] = mark_ship(row, col, size, orientation)
-                placed = True
+            if orientation == 'horizontal':
+                row = random.randint(0, 8)
+                col = random.randint(0, 9 - size)
+                if all(board[row][col + i] == ' ' for i in range(size)):
+                    for i in range(size):
+                        board[row][col + i] = 'O'
+                        ship_positions[ship].append((row, col + i))
+                    placed = True
+            else:
+                row = random.randint(0, 9 - size)
+                col = random.randint(0, 8)
+                if all(board[row + i][col] == ' ' for i in range(size)):
+                    for i in range(size):
+                        board[row + i][col] = 'O'
+                        ship_positions[ship].append((row + i, col))
+                    placed = True
     return ship_positions
-
-
-def validate_input(guess):
-    """
-    Validates user input for the guess.
-    """
-    msg_invalid = "Invalid input format. Use a letter (A-I) and number (1-9)."
-    if len(guess) < 2 or len(guess) > 3:
-        print(msg_invalid)
-        return False
-    col, row = guess[0].upper(), guess[1:]
-    if col not in 'ABCDEFGHI' or not row.isdigit() or not (1 <= int(row) <= 9):
-        print("Invalid coordinates. Column must be A-I, and row must be 1-9.")
-        return False
-    return True
 
 
 def computer_guess(board, last_hit=None):
