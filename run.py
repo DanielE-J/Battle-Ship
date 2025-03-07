@@ -124,9 +124,6 @@ def is_ship_sunk(ship_positions, board, ship):
 
 
 def play_game():
-    """
-    Main game loop where player and computer alternate turns.
-    """
     name = input('Enter your name: ').strip()
     while not name or re.match(r'^\d', name):
         print('Invalid name. Please enter a valid name.')
@@ -216,10 +213,11 @@ def play_game():
         print_board(computer_board, hide_ships=True)
         time.sleep(1)
 
-        play_again = input("Do you want to play again? (y/n): ").strip().lower()
-        if play_again != 'y':
-                print(f'Thanks for playing, {name}! Goodbye! 👋')
-                break
+    # After the game ends (whether win or lose), ask to play again
+    play_again = input("Do you want to play again? (y/n): ").strip().lower()
+    if play_again != 'y':
+        print(f'Thanks for playing, {name}! Goodbye! 👋')
+
 
 def main():
     """
