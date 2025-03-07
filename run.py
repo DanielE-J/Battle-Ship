@@ -112,7 +112,7 @@ def computer_guess(board, last_hit=None):
     while True:
         row = random.randint(0, 8)
         col = random.randint(0, 8)
-        if board[row][col] == ' ':
+        if board[row][col] == 'O':
             return row, col
 
 
