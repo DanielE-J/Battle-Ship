@@ -215,7 +215,10 @@ def play_game():
 
     # After the game ends (whether win or lose), ask to play again
     play_again = input("Do you want to play again? (y/n): ").strip().lower()
-    if play_again != 'y':
+    if play_again == 'y':
+        print(f"Restarting the game... 🎮")
+        play_game()  # Restart the game by calling the function again
+    else:
         print(f'Thanks for playing, {name}! Goodbye! 👋')
 
 
