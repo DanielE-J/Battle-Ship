@@ -101,12 +101,13 @@ def computer_guess(board, last_hit=None):
         row, col = last_hit
         # Directions: right, down, left, up
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        random.shuffle(directions)  # Randomize directions to add unpredictability
+        random.shuffle(directions)  # Randomize directions
 
         for dr, dc in directions:
             new_row, new_col = row + dr, col + dc
-            if 0 <= new_row < 9 and 0 <= new_col < 9 and board[new_row][new_col] == ' ':
-                return new_row, new_col
+            if 0 <= new_row < 9 and 0 <= new_col < # type: ignore
+            9 and board[new_row][new_col] == ' ': # type: ignore
+            return new_row, new_col
 
     # If no last hit or no valid adjacent spots, choose a random empty cell
     while True:
@@ -177,8 +178,9 @@ def play_game():
                 print('Hit! 🎯')
                 time.sleep(1)
                 for ship in ships:
-                    if is_ship_sunk(computer_ship_positions, computer_board, ship):
-                        if not computer_ships_sunk[ship]:
+                    if is_ship_sunk
+                    (computer_ship_positions, computer_board, ship): # type: ignore
+                    if not computer_ships_sunk[ship]:
                             print(f"You sunk the enemy's {ship}! 🚩")
                             computer_ships_sunk[ship] = True
             else:
@@ -206,7 +208,8 @@ def play_game():
                             player_ships_sunk[ship] = True
             else:
                 player_board[computer_row][computer_col] = 'M'
-                print(f'Enemy missed! 🌊 (Enemy guessed {chr(computer_col + ord("A"))}{computer_row + 1})')
+                print(f'Enemy missed! 🌊 (Enemy guessed {chr(
+                    computer_col + ord("A"))}{computer_row + 1})')
                 last_hit = None
                 time.sleep(1)
 
@@ -223,7 +226,7 @@ def play_game():
             time.sleep(1)
 
         # Ask if the player wants to play again
-        play_again = input("Do you want to play again? (y/n): ").strip().lower()
+        play_again = input(" Play again? (y/n): ").strip().lower()
         if play_again != 'y':
             print(f'Thanks for playing, {name}! Goodbye! 👋')
             break
@@ -251,7 +254,6 @@ def main():
     player_name = play_game()
     time.sleep(1)
     print(f'Thanks for playing! Goodbye, {player_name}! 👋')
-
 
 
 if __name__ == '__main__':
