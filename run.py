@@ -216,6 +216,11 @@ def play_game():
         print_board(computer_board, hide_ships=True)
         time.sleep(1)
 
+        play_again = input("Do you want to play again? (y/n): ").strip().lower()
+        if play_again != 'y':
+                print(f'Thanks for playing, {name}! Goodbye! 👋')
+                break
+
 def main():
     """
     Entry point of the program.
