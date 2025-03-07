@@ -101,7 +101,7 @@ def computer_guess(board, last_hit=None):
         row, col = last_hit
         # Directions: right, down, left, up
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        random.shuffle(directions)  # Randomize directions to add unpredictability
+        random.shuffle(directions)  # Randomize add unpredictability
 
         for dr, dc in directions:
             new_row, new_col = row + dr, col + dc
