@@ -106,7 +106,7 @@ def computer_guess(board, last_hit=None):
         for dr, dc in directions:
             new_row, new_col = row + dr, col + dc
             if 0 <= new_row < 9 and 0 <= new_col <  # type: ignore
-            9 and board[new_row][new_col] == ' ':  # type: ignore
+            9 and board[new_row][new_col] == '0':  # type: ignore
                 return new_row, new_col # type:ignore
 
     # If no last hit or no valid adjacent spots, choose a random empty cell
