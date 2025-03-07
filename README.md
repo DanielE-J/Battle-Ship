@@ -291,6 +291,16 @@ The testing approach is as follows:
 <img src="readme_images/exit2.jpg">
 </details>
 
+7. I want the user to play again if win or loose
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+| Main menu | Game| Users have the option to play again  | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="readme_images\playagain.jpg">
+</details>
+
 
 ## Bugs
 
