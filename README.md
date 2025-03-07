@@ -1,6 +1,6 @@
 # Battleship Game
 
-Welcome to my Battle-Ship game!!
+Welcome to my Battle-Ship game!
 
 (Developer: Daniel Elde-Johansson)
 
