@@ -198,7 +198,8 @@ def play_game():
                         player_ships_sunk[ship] = True
         else:
             player_board[computer_row][computer_col] = 'M'
-            print(f'Enemy missed! 🌊 (Enemy guessed {chr(computer_col + ord("A"))}{computer_row + 1})')
+            print(f'Enemy missed! 🌊 (Enemy guessed {
+                chr(computer_col + ord("A"))}{computer_row + 1})')
             last_hit = None
             time.sleep(1)
 
