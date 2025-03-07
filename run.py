@@ -105,9 +105,9 @@ def computer_guess(board, last_hit=None):
 
         for dr, dc in directions:
             new_row, new_col = row + dr, col + dc
-            if 0 <= new_row < 9 and 0 <= new_col < # type: ignore
-            9 and board[new_row][new_col] == ' ': # type: ignore
-            return new_row, new_col
+            if 0 <= new_row < 9 and 0 <= new_col <  # type: ignore
+            9 and board[new_row][new_col] == ' ':  # type: ignore
+                return new_row, new_col # type:ignore
 
     # If no last hit or no valid adjacent spots, choose a random empty cell
     while True:
@@ -179,10 +179,10 @@ def play_game():
                 time.sleep(1)
                 for ship in ships:
                     if is_ship_sunk
-                    (computer_ship_positions, computer_board, ship): # type: ignore
-                    if not computer_ships_sunk[ship]:
-                            print(f"You sunk the enemy's {ship}! 🚩")
-                            computer_ships_sunk[ship] = True
+                    (computer_ship_positions, computer_board,  # type:ignore
+                     ship): if not computer_ships_sunk[ship]:  # type:ignore
+                        print(f"You sunk the enemy's {ship}! 🚩")# type:ignore
+                        computer_ships_sunk[ship] = True
             else:
                 computer_board[row][col] = 'M'
                 print('Miss! 🌊')
